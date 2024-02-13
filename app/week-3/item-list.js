@@ -72,7 +72,9 @@ export default function ItemList () {
     quantity: 4,
     category: "household",
   };
+
   return (
+    
     <ul>
       <Item {...item1} />
       <Item {...item2} />
