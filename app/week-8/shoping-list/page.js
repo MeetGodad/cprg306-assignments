@@ -45,6 +45,6 @@ export default function Page () {
         </div>
       </main>
     ) : 
-   <Link href="./" className="flex text-lg m-8">Go Back an Sign In </Link>
+   <Link href="./" className="flex text-xl m-8">Go Back an Sign In </Link>
   );
 };
