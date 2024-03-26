@@ -11,6 +11,7 @@ export default function Page() {
     <Link href="week-6" className="text-blue-500 hover:text-green-500 transition duration-500 block text-lg">Week 6 Assignment</Link>
     <Link href="week-7" className="text-blue-500 hover:text-green-500 transition duration-500 block text-lg">Week 7 Assignment</Link>
     <Link href="week-8" className="text-blue-500 hover:text-green-500 transition duration-500 block text-lg">Week 8 Assignment</Link>
+    <Link href="week-10" className="text-blue-500 hover:text-green-500 transition duration-500 block text-lg">Week 10 Assignment</Link>
   </main>
   );
 };
