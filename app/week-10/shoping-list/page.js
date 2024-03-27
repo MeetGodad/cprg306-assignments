@@ -17,13 +17,14 @@ export default function Page () {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   function handleItemSelect(item) {
-    const cleanedItemName = item.name
-      .split(',')[0] // Remove the size
-      .replace(/[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2580-\u27BF]|\uD83E[\uDD10-\uDDFF]/g, '') // Remove the emoji
-      .trim();
-    setSelectedItemName(cleanedItemName);
+    if (item && item.name) {
+      const cleanedItemName = item.name
+        .split(',')[0] // Remove the size
+        .replace(/[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2580-\u27BF]|\uD83E[\uDD10-\uDDFF]/g, '') // Remove the emoji
+        .trim();
+      setSelectedItemName(cleanedItemName);
+    }
   }
-  
   async function handleAddItem(newItem) {
     const newItemWithId = { ...newItem, id: await addItem(user.uid, newItem) };
     setItems([...items, newItemWithId]);
@@ -38,7 +39,7 @@ export default function Page () {
     if (user) {
       loadItems();
     }
-  }, []);
+  }, [user]);
 
   
 

@@ -1,16 +1,20 @@
 
 import { db } from "../_utils/firebase";
-import { collection, getDocs, addDoc, query } from "firebase/firestore";
+import { collection, getDocs, addDoc, query , doc } from "firebase/firestore";
+export const getItems = async (userID) => {
+    try {
+      const itemsCollectionRef = collection(db, `users/${userID}/items`);
+      const itemsSnap = await getDocs(itemsCollectionRef);
+  
+        return itemsSnap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-export async function getItems(userId) {
-    const itemsCollection = collection(db, `users/${userId}/items`);
-    const itemsSnapshot = await getDocs(itemsCollection);
-    const itemsList = itemsSnapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data()
-    }));
-    return itemsList;
-}
+    } catch (error) {
+      console.error("Error in getItems: ", error);
+    }
+};
 
 export async function addItem(userId, item) {
     const itemsCollection = collection(db, `users/${userId}/items`);

@@ -17,16 +17,15 @@ export default function ItemList( {items , onItemSelect }) {
 
   
   let sortedItems = [];
-if (items && Array.isArray(items)) {
-    sortedItems = [...items].sort((a, b) => {
-        if (sortBy === 'name') {
-            return a.name.localeCompare(b.name);
-        } else if (sortBy === 'category') {
-            return a.category.localeCompare(b.category);
-        }
-        return 0;
-    });
-}
+  if (items && Array.isArray(items)) {
+      sortedItems = [...items].sort((a, b) => {
+          if (sortBy === 'name') {
+              return (a.name || "").localeCompare(b.name || "");
+          } else if (sortBy === 'category') {
+              return (a.category || "").localeCompare(b.category || "");
+          }
+      });
+  }
 
   return (
     <main className="p-4">
